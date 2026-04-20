@@ -4,6 +4,8 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { featuredExperts } from "@/lib/mock-data";
 
+export const dynamic = 'force-dynamic';
+
 export default function BrowsePage() {
   const cards = [...featuredExperts, ...featuredExperts].slice(0, 6);
 
