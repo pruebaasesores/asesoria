@@ -1,10 +1,10 @@
+export const dynamic = 'force-dynamic';
+
 import Link from "next/link";
 import { Search, SlidersHorizontal, Star } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { featuredExperts } from "@/lib/mock-data";
-
-export const dynamic = 'force-dynamic';
 
 export default function BrowsePage() {
   const cards = [...featuredExperts, ...featuredExperts].slice(0, 6);
