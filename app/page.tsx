@@ -39,8 +39,8 @@ const benefits = [
 ];
 
 export default function HomePage() {
-  return (
-    <main>
+  return <h1>OK</h1>;
+}
       <Navbar />
 
       <section className="overflow-hidden">
