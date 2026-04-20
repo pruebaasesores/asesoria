@@ -8,10 +8,10 @@ import {
   Star,
   Zap
 } from "lucide-react";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-import { SectionTitle } from "@/components/section-title";
-import { featuredExperts, categories } from "@/lib/mock-data";
+//import { Navbar } from "@/components/navbar";
+//import { Footer } from "@/components/footer";
+//import { SectionTitle } from "@/components/section-title";
+//import { featuredExperts, categories } from "@/lib/mock-data";
 
 const steps = [
   {
