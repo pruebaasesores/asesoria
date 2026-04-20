@@ -1,11 +1,11 @@
 "use client";
 
+export const dynamic = 'force-dynamic';
+
 import { useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-
-export const dynamic = 'force-dynamic';
 
 export default function AuthPage() {
   const [mode, setMode] = useState<"client" | "expert">("expert");
