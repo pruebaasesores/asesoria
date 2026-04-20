@@ -1,9 +1,8 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   experimental: {
-    optimizePackageImports: ["lucide-react"]
-  }
+    optimizePackageImports: ["lucide-react"],
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
