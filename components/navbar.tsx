@@ -10,20 +10,20 @@ export function Navbar() {
           <Logo />
           <div>
             <div className="brand-copy-title">Guilda</div>
-            <div className="logo-caption">marketplace para expertos y gamers</div>
+            <div className="logo-caption">reserva expertos · paga dentro · crece con comisión</div>
           </div>
         </Link>
 
         <nav className="nav-links">
           <Link href="/browse">Marketplace</Link>
-          <Link href="/profile">Perfil</Link>
-          <Link href="/dashboard">Dashboard</Link>
+          <Link href="/dashboard">Operaciones</Link>
+          <Link href="/profile">Panel experto</Link>
         </nav>
 
         <div className="nav-actions">
           <Link href="/browse" className="button button-secondary compact-button">Explorar</Link>
           <Link href="/auth" className="button button-primary compact-button">
-            Empezar
+            Registrarse
             <ArrowRight size={16} />
           </Link>
         </div>

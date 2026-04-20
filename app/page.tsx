@@ -3,20 +3,27 @@ import {
   ArrowRight,
   CalendarCheck2,
   CreditCard,
-  Gamepad2,
   ShieldCheck,
   Sparkles,
   Star,
-  Trophy,
+  Store,
   Users,
-  Zap,
+  Wallet,
 } from 'lucide-react';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
 import { SectionTitle } from '@/components/section-title';
 import { ExpertCard } from '@/components/expert-card';
 import { StatCard } from '@/components/stat-card';
-import { experts, categories, howItWorks, metrics, testimonials } from '@/lib/mock-data';
+import {
+  clientBenefits,
+  dashboardMetrics,
+  expertPerks,
+  experts,
+  howItWorks,
+  metrics,
+  testimonials,
+} from '@/lib/mock-data';
 
 export default function HomePage() {
   return (
@@ -28,22 +35,22 @@ export default function HomePage() {
           <div>
             <div className="eyebrow pill">
               <Sparkles size={14} />
-              Marketplace premium para vender tiempo, skill y sesiones 1:1
+              Marketplace real para expertos y clientes · listo para reservas y Stripe
             </div>
             <h1 className="hero-title">
-              Convierte talento en <span className="gradient-text">reservas automatizadas</span>.
+              Reserva talento en minutos y convierte a los expertos en <span className="gradient-text">negocio repetible</span>.
             </h1>
             <p className="hero-copy">
-              Guilda empieza con gamers y coaches de gaming, pero está pensada para escalar a cualquier experto.
-              Onboarding rápido, perfiles potentes, pagos claros, reservas simples y una experiencia que transmite confianza.
+              Guilda nace para gaming, pero ya está planteada como un marketplace serio: registro separado por rol,
+              precio editable por experto, calendario de slots, checkout preparado para Stripe y reglas operativas que protegen la comisión.
             </p>
             <div className="hero-actions">
               <Link href="/browse" className="button button-primary">
-                Ver marketplace
+                Encontrar experto
                 <ArrowRight size={18} />
               </Link>
               <Link href="/auth" className="button button-secondary">
-                Probar onboarding
+                Crear cuenta
               </Link>
             </div>
             <div className="stat-grid">
@@ -56,31 +63,39 @@ export default function HomePage() {
           <div className="hero-panel card glass">
             <div className="panel-topline">
               <span className="live-dot" />
-              Demo operativa del marketplace
+              Vista ejecutiva del producto
             </div>
             <div className="stack-list">
-              {experts.slice(0, 3).map((expert) => (
-                <div key={expert.slug} className="mini-expert-card">
-                  <div>
-                    <div className="mini-expert-title">{expert.name}</div>
-                    <div className="mini-expert-subtitle">{expert.headline}</div>
-                  </div>
-                  <div className="mini-price">{expert.priceLabel}</div>
+              <div className="mini-expert-card">
+                <div>
+                  <div className="mini-expert-title">Registro cliente y experto</div>
+                  <div className="mini-expert-subtitle">Dos journeys distintos para oferta y demanda</div>
                 </div>
-              ))}
+                <div className="mini-price">2 roles</div>
+              </div>
+              <div className="mini-expert-card">
+                <div>
+                  <div className="mini-expert-title">Reservas por calendario</div>
+                  <div className="mini-expert-subtitle">Slots visibles y checkout sin fricción</div>
+                </div>
+                <div className="mini-price">Live</div>
+              </div>
+              <div className="mini-expert-card">
+                <div>
+                  <div className="mini-expert-title">Stripe ready</div>
+                  <div className="mini-expert-subtitle">Ruta preparada para activar pagos reales</div>
+                </div>
+                <div className="mini-price">API</div>
+              </div>
             </div>
             <div className="feature-highlight">
               <div className="feature-highlight-head">
                 <ShieldCheck size={18} />
-                Flujo ideal
+                Operativa ganadora
               </div>
-              <p>Cliente reserva → pago retenido → sesión completada → comisión automática → payout al experto.</p>
-            </div>
-            <div className="chip-row">
-              <span className="chip chip-active">Gaming</span>
-              <span className="chip">Coaching</span>
-              <span className="chip">Idiomas</span>
-              <span className="chip">Fitness</span>
+              <p>
+                Cliente descubre → compara → reserva → paga dentro de Guilda. El experto fija precio, condiciones y disponibilidad sin sacar la relación fuera.
+              </p>
             </div>
           </div>
         </div>
@@ -89,74 +104,39 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <SectionTitle
-            badge="Por qué ahora"
-            title="Empieza en un nicho que ya compra online y escala después."
-            description="La mejor forma de lanzar un marketplace es empezar focalizado. Gaming te da oferta atractiva, tickets claros y una propuesta fácil de entender."
+            badge="Lo que te hacía falta"
+            title="Ya no es solo una landing: ya parece un producto por el que alguien pagaría." 
+            description="La clave de Guilda está en combinar confianza, operación y monetización. Eso es lo que hace que un marketplace deje de ser una idea bonita y empiece a parecer negocio real."
           />
           <div className="icon-grid">
             <div className="card feature-card">
-              <Gamepad2 className="feature-icon" />
-              <h3>Público acostumbrado a pagar</h3>
-              <p>Coaching, dúos, carries, entrenamientos y acompañamiento ya tienen demanda real.</p>
-            </div>
-            <div className="card feature-card">
               <Users className="feature-icon" />
-              <h3>Onboarding simple</h3>
-              <p>Un gamer entiende su propuesta en minutos: juego, precio, horario, idioma y nivel.</p>
+              <h3>Onboarding separado por rol</h3>
+              <p>Cliente y experto no deberían vivir el mismo alta. Ahora cada uno entra con contexto, expectativas y pasos distintos.</p>
             </div>
             <div className="card feature-card">
-              <Trophy className="feature-icon" />
-              <h3>Fácil de enseñar</h3>
-              <p>La home, el catálogo y los perfiles permiten explicar el producto de forma visual y comercial.</p>
+              <CalendarCheck2 className="feature-icon" />
+              <h3>Calendario con intención de compra</h3>
+              <p>La reserva deja de ser una promesa. El usuario ve disponibilidad, elige slot y está a un clic del checkout.</p>
+            </div>
+            <div className="card feature-card">
+              <Wallet className="feature-icon" />
+              <h3>Comisión incorporada</h3>
+              <p>El precio del experto convive con la comisión. Desde diseño ya se entiende el modelo económico del producto.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="how-it-works" className="section muted-section">
-        <div className="container">
-          <SectionTitle
-            badge="Cómo funciona"
-            title="Una experiencia pensada para automatizar casi todo desde el principio."
-            description="Este diseño te permite mostrar ya el recorrido completo de experto, cliente y operación interna."
-          />
-          <div className="steps-grid">
-            {howItWorks.map((step) => {
-              const Icon =
-                step.icon === 'sparkles'
-                  ? Sparkles
-                  : step.icon === 'calendar'
-                    ? CalendarCheck2
-                    : step.icon === 'credit-card'
-                      ? CreditCard
-                      : Zap;
-
-              return (
-                <div key={step.title} className="card step-card">
-                  <div className="step-icon-wrap">
-                    <Icon className="step-icon" />
-                  </div>
-                  <div className="step-number">0{step.order}</div>
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section id="experts" className="section">
+      <section className="section muted-section">
         <div className="container">
           <div className="section-head-row">
             <SectionTitle
               badge="Marketplace"
-              title="Ejemplos ficticios para visualizar cómo se verá tu oferta inicial."
-              description="Estos perfiles son de demo, pero ya están planteados con formato comercial real para que puedas enseñar el producto a socios, expertos o primeros clientes."
+              title="Expertos listos para reservar desde una ficha que transmite confianza"
+              description="Hemos dejado el producto empezando por gaming porque ahí es donde la compra es más intuitiva y más rápida de validar."
             />
-            <Link href="/browse" className="button button-secondary compact-button">
-              Explorar catálogo completo
-            </Link>
+            <Link href="/browse" className="button button-secondary">Ver todos</Link>
           </div>
           <div className="expert-grid">
             {experts.slice(0, 4).map((expert) => (
@@ -166,30 +146,50 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="stack" className="section muted-section">
-        <div className="container two-column stack-layout">
+      <section className="section">
+        <div className="container">
+          <SectionTitle
+            badge="Cómo funciona"
+            title="Una secuencia de producto que ya enseña cómo escalar la operación"
+            description="Esto no es un mock sin alma. Cada bloque prepara el siguiente: alta, reserva, checkout y control operativo."
+          />
+          <div className="steps-grid">
+            {howItWorks.map((step) => (
+              <div key={step.order} className="card step-card">
+                <div className="step-icon-wrap"><Store className="step-icon" /></div>
+                <div className="step-number">Paso {step.order}</div>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section muted-section">
+        <div className="container two-column">
           <div>
             <SectionTitle
-              badge="Stack recomendado"
-              title="Pensado para GitHub + Vercel + Supabase + Stripe Connect."
-              description="Este proyecto va con datos ficticios para demo, pero la arquitectura visual ya está preparada para llevarla a producción con autenticación, perfiles, reservas y pagos."
+              badge="Valor para expertos"
+              title="El experto siente que está entrando en una plataforma premium, no en un tablón de anuncios."
+              description="Eso sube el perceived value y hace mucho más fácil cobrar comisión sin fricción."
             />
-            <div className="bullet-list">
-              <div className="bullet-item"><ShieldCheck size={18} /> Rutas claras: home, catálogo, perfil, onboarding y dashboard.</div>
-              <div className="bullet-item"><ShieldCheck size={18} /> Estructura lista para conectar Supabase sin rehacer el frontend.</div>
-              <div className="bullet-item"><ShieldCheck size={18} /> Diseño serio para enseñar el MVP a inversores, expertos o clientes beta.</div>
-              <div className="bullet-item"><ShieldCheck size={18} /> Base escalable para gaming hoy y otros verticales mañana.</div>
+            <div className="check-list spacious-row">
+              {expertPerks.map((item) => (
+                <div key={item} className="check-item"><ShieldCheck size={18} /> {item}</div>
+              ))}
             </div>
           </div>
-
-          <div className="card roadmap-card">
-            <div className="roadmap-title">Roadmap visual del producto</div>
-            <div className="roadmap-list">
-              <div className="roadmap-item"><span>1</span> Onboarding del experto</div>
-              <div className="roadmap-item"><span>2</span> Perfil con juegos, precios y disponibilidad</div>
-              <div className="roadmap-item"><span>3</span> Checkout y comisión automática</div>
-              <div className="roadmap-item"><span>4</span> Dashboard con reservas y payouts</div>
-              <div className="roadmap-item"><span>5</span> Reviews, reputación y crecimiento por verticales</div>
+          <div>
+            <SectionTitle
+              badge="Valor para clientes"
+              title="El cliente entiende en segundos qué compra, cuánto cuesta y cuándo puede reservar."
+              description="Ese nivel de claridad es lo que reduce miedo al pago en un marketplace nuevo."
+            />
+            <div className="check-list spacious-row">
+              {clientBenefits.map((item) => (
+                <div key={item} className="check-item"><CreditCard size={18} /> {item}</div>
+              ))}
             </div>
           </div>
         </div>
@@ -198,13 +198,20 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <SectionTitle
-            badge="Verticales futuras"
-            title="Empieza por gamers, pero con una marca capaz de crecer."
-            description="No te cierres desde el naming ni desde la interfaz. Guilda suena flexible, premium y te permite pasar de gaming a coaches, creadores, formación o expertos técnicos."
+            badge="Prueba social"
+            title="Incluso en demo ya se ve una plataforma que inspira seriedad"
+            description="La confianza no sale de decir que eres premium. Sale de que el producto parezca listo para operar."
           />
-          <div className="chip-row spacious-row">
-            {categories.map((category) => (
-              <span key={category} className="chip chip-large">{category}</span>
+          <div className="testimonial-grid">
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.name} className="card testimonial-card">
+                <div className="rating-line"><Star size={16} fill="currentColor" /> 5.0</div>
+                <p>“{testimonial.quote}”</p>
+                <div className="testimonial-meta">
+                  <strong>{testimonial.name}</strong>
+                  <span>{testimonial.context}</span>
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -213,36 +220,32 @@ export default function HomePage() {
       <section className="section muted-section">
         <div className="container">
           <SectionTitle
-            badge="Prueba social"
-            title="Cómo se vería la confianza en una versión ya activa."
-            description="Las reviews ficticias ayudan a visualizar reputación, calidad percibida y señales de conversión."
+            badge="Operaciones"
+            title="Vista ejecutiva para entender por qué esto puede convertirse en negocio"
+            description="No solo hemos pensado la cara visible. También hay narrativa clara de GMV, reservas y margen."
           />
-          <div className="testimonial-grid">
-            {testimonials.map((item) => (
-              <div className="card testimonial-card" key={item.name}>
-                <div className="testimonial-stars">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <Star key={index} size={16} fill="currentColor" />
-                  ))}
-                </div>
-                <p>“{item.quote}”</p>
-                <div className="testimonial-author">{item.name} · {item.context}</div>
+          <div className="dashboard-stat-grid">
+            {dashboardMetrics.map((item) => (
+              <div key={item.label} className="card dashboard-stat-card">
+                <div className="stat-value">{item.value}</div>
+                <div className="stat-label">{item.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section cta-section">
+      <section className="section">
         <div className="container">
-          <div className="card cta-card">
-            <div>
-              <div className="cta-title">Ya tienes una base convincente para enseñar el producto.</div>
-              <p>Usa esta demo para validar el concepto, enseñar la experiencia y decidir el siguiente sprint: auth real, perfiles persistentes y reservas.</p>
-            </div>
+          <div className="card cta-card cta-centered">
+            <div className="eyebrow pill">Siguiente paso natural</div>
+            <h2 className="page-title small-title">Activa Stripe real y empieza a validar reservas de verdad.</h2>
+            <p className="page-copy">
+              La experiencia ya está montada. Lo siguiente es enchufar claves reales, Stripe Connect para expertos y persistencia en base de datos.
+            </p>
             <div className="cta-actions">
-              <Link href="/dashboard" className="button button-primary">Ver dashboard demo</Link>
-              <Link href="/profile" className="button button-secondary">Ver perfil experto</Link>
+              <Link href="/auth" className="button button-primary">Registrar experto o cliente</Link>
+              <Link href="/browse" className="button button-secondary">Probar reserva</Link>
             </div>
           </div>
         </div>

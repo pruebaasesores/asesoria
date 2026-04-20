@@ -9,14 +9,15 @@ export function Footer() {
           <Logo />
           <div>
             <div className="brand-copy-title">Guilda</div>
-            <div className="brand-copy-small">Demo visual lista para enseñar el concepto del marketplace.</div>
+            <div className="brand-copy-small">Marketplace premium para expertos y clientes. Demo funcional lista para evolucionar a producción.</div>
           </div>
         </div>
         <div className="footer-links">
           <Link href="/">Inicio</Link>
           <Link href="/browse">Marketplace</Link>
-          <Link href="/auth">Onboarding</Link>
-          <Link href="/dashboard">Dashboard</Link>
+          <Link href="/auth">Registro</Link>
+          <Link href="/dashboard">Operaciones</Link>
+          <Link href="/profile">Panel experto</Link>
         </div>
       </div>
     </footer>

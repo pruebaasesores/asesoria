@@ -1,42 +1,33 @@
 # Guilda
 
-Demo premium de marketplace para expertos y gamers, pensada para enseñar una visión final del producto antes de conectar backend real.
+Demo premium de un marketplace para expertos y clientes, empezando por gaming.
 
-## Incluye
+## Qué incluye
+- registro separado para cliente y experto
+- experto con precio editable y aceptación de condiciones
+- marketplace con perfiles premium
+- ficha de experto con calendario y reserva
+- checkout preparado para Stripe o fallback demo
+- dashboard de operaciones
 
-- Home comercial bien diseñada
-- Marketplace con perfiles ficticios
-- Detalle de experto
-- Onboarding demo
-- Dashboard demo de operaciones
-- Branding y logo de Guilda
-
-## Stack
-
-- Next.js App Router
-- React
-- lucide-react
-
-## Arranque
-
+## Ejecutar en local
 ```bash
 npm install
 npm run dev
 ```
 
 ## Deploy en Vercel
+Selecciona **Next.js** como preset.
 
-1. Sube el proyecto a GitHub.
-2. Crea un proyecto nuevo en Vercel.
-3. Selecciona **Next.js** como preset.
-4. Deploy.
+### Variables opcionales para Stripe real
+```bash
+STRIPE_SECRET_KEY=sk_test_...
+NEXT_PUBLIC_APP_URL=https://tu-dominio.vercel.app
+```
 
-No necesita variables de entorno porque esta versión funciona con datos ficticios.
+Si no añades `STRIPE_SECRET_KEY`, el checkout funciona en modo demo y redirige a la página de éxito.
 
-## Siguiente evolución
-
-- Supabase Auth
-- perfiles persistentes
-- reservas reales
-- Stripe Connect
-- reviews y reputación
+## Siguiente integración recomendada
+- Supabase Auth y base de datos
+- Stripe Connect Express para payouts a expertos
+- persistencia real de slots, reservas y pagos
