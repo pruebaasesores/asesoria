@@ -1,72 +1,42 @@
 # Guilda
 
-Marketplace premium para conectar expertos con clientes mediante reservas y comisiones automáticas.
-
-## Posicionamiento inicial
-Guilda nace para **gamers y coaches de gaming**, pero la arquitectura está preparada para crecer hacia cualquier vertical:
-- coaching
-- idiomas
-- diseño
-- fitness
-- tecnología
-- consultoría
-
-## Stack
-- **Next.js 15**
-- **TypeScript**
-- **Tailwind CSS**
-- **Supabase** (Auth + Postgres + RLS)
-- **Vercel** para despliegue
+Demo premium de marketplace para expertos y gamers, pensada para enseñar una visión final del producto antes de conectar backend real.
 
 ## Incluye
-- landing premium
-- página de exploración de expertos
-- pantalla de onboarding para expertos y clientes
-- estructura lista para conectar Supabase
-- identidad visual y logo SVG
-- SQL completo para Supabase
 
-## Arranque local
+- Home comercial bien diseñada
+- Marketplace con perfiles ficticios
+- Detalle de experto
+- Onboarding demo
+- Dashboard demo de operaciones
+- Branding y logo de Guilda
+
+## Stack
+
+- Next.js App Router
+- React
+- lucide-react
+
+## Arranque
 
 ```bash
 npm install
-cp .env.example .env.local
 npm run dev
 ```
 
-## Variables necesarias
+## Deploy en Vercel
 
-```env
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-```
+1. Sube el proyecto a GitHub.
+2. Crea un proyecto nuevo en Vercel.
+3. Selecciona **Next.js** como preset.
+4. Deploy.
 
-## SQL
-Ejecuta el archivo:
+No necesita variables de entorno porque esta versión funciona con datos ficticios.
 
-```bash
-supabase/schema.sql
-```
+## Siguiente evolución
 
-o pégalo en el SQL Editor de Supabase.
-
-## Roadmap sugerido
-1. Conectar Supabase Auth
-2. Crear onboarding real del experto
-3. Integrar Stripe Connect
-4. Construir disponibilidad y reservas
-5. Añadir reviews, payouts y panel admin
-
-## Estructura de negocio
-- el cliente reserva y paga
-- la plataforma aplica comisión
-- el experto recibe payout
-- la reputación crece con reviews verificadas
-
-## Marca
-Nombre propuesto: **Guilda**
-
-Idea de marca:
-- “guild” transmite comunidad, skill y pertenencia
-- suena premium, corto y memorable
-- sirve para gaming hoy y expertos mañana
+- Supabase Auth
+- perfiles persistentes
+- reservas reales
+- Stripe Connect
+- reviews y reputación

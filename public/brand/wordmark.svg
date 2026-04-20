@@ -1,16 +1,10 @@
-<svg width="620" height="180" viewBox="0 0 620 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="320" height="72" viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" fill="none">
   <defs>
-    <linearGradient id="guilda-gradient" x1="20" y1="18" x2="170" y2="170" gradientUnits="userSpaceOnUse">
+    <linearGradient id="word-gradient" x1="30" y1="8" x2="270" y2="65" gradientUnits="userSpaceOnUse">
       <stop stop-color="#A78BFA" />
-      <stop offset="0.55" stop-color="#7C3AED" />
+      <stop offset="0.5" stop-color="#7C3AED" />
       <stop offset="1" stop-color="#22D3EE" />
     </linearGradient>
   </defs>
-  <rect width="620" height="180" rx="32" fill="#09090B" />
-  <g transform="translate(18,18)">
-    <path d="M72 12 126 40v38c0 31.9-20.8 52.4-54 61.6C38.8 130.4 18 109.9 18 78V40L72 12Z" fill="url(#guilda-gradient)" />
-    <path d="M46 55.4c0-9.9 8.1-18 18-18h15.4c9.9 0 18 8.1 18 18v5.1H82v-3.9c0-3.6-2.9-6.4-6.4-6.4h-7.7c-3.6 0-6.4 2.9-6.4 6.4v5.1L97.4 73.5v9.4c0 9.9-8.1 18-18 18H64c-9.9 0-18-8.1-18-18v-5.1h15.4v3.9c0 3.6 2.9 6.4 6.4 6.4h7.7c3.6 0 6.4-2.9 6.4-6.4v-5.1L46 64.8v-9.4Z" fill="#F8FAFC" />
-  </g>
-  <text x="176" y="102" fill="#F8FAFC" font-size="62" font-weight="700" font-family="Inter, Arial, sans-serif">Guilda</text>
-  <text x="178" y="131" fill="#A1A1AA" font-size="18" font-weight="500" font-family="Inter, Arial, sans-serif">book real time expertise</text>
+  <text x="0" y="50" fill="url(#word-gradient)" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">Guilda</text>
 </svg>

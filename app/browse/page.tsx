@@ -1,32 +1,51 @@
-export const dynamic = 'force-dynamic';
+import { Search, SlidersHorizontal } from 'lucide-react';
+import { ExpertCard } from '@/components/expert-card';
+import { Footer } from '@/components/footer';
+import { Navbar } from '@/components/navbar';
+import { experts } from '@/lib/mock-data';
 
-import { supabase } from '@/lib/supabase/client';
+const featuredFilters = ['Todos', 'Valorant', 'League of Legends', 'Fortnite', 'Dúos', 'Coaching'];
 
-export default async function BrowsePage() {
-  const { data, error } = await supabase.from('profiles').select('*');
-
+export default function BrowsePage() {
   return (
-    <main style={{ padding: 40 }}>
-      <h1>Gamers</h1>
+    <main>
+      <Navbar />
+      <section className="section compact-top-section">
+        <div className="container">
+          <div className="browse-hero">
+            <div>
+              <div className="eyebrow pill">Marketplace demo</div>
+              <h1 className="page-title">Explora expertos disponibles</h1>
+              <p className="page-copy">Perfiles ficticios para visualizar cómo se verá tu catálogo inicial con gamers, coaches y sesiones reservables.</p>
+            </div>
+            <div className="browse-actions">
+              <div className="search-box">
+                <Search size={18} />
+                <span>Buscar juego, experto o servicio</span>
+              </div>
+              <button className="button button-secondary compact-button" type="button">
+                <SlidersHorizontal size={16} />
+                Filtros
+              </button>
+            </div>
+          </div>
 
-      {error && <p>Error: {error.message}</p>}
+          <div className="chip-row spacious-row">
+            {featuredFilters.map((filter, index) => (
+              <span key={filter} className={`chip ${index === 0 ? 'chip-active' : ''}`}>
+                {filter}
+              </span>
+            ))}
+          </div>
 
-      {data?.map((user) => (
-        <div
-          key={user.id}
-          style={{
-            border: '1px solid #333',
-            padding: 15,
-            marginBottom: 10,
-            borderRadius: 10,
-          }}
-        >
-          <p><b>{user.username}</b></p>
-          <p>🎮 {user.game || 'Sin juego'}</p>
-          <p>💰 {user.price ? user.price + ' €/h' : 'Sin precio'}</p>
-          <p>{user.description || 'Sin descripción'}</p>
+          <div className="expert-grid browse-grid">
+            {experts.map((expert) => (
+              <ExpertCard key={expert.slug} expert={expert} />
+            ))}
+          </div>
         </div>
-      ))}
+      </section>
+      <Footer />
     </main>
   );
 }

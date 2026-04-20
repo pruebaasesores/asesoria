@@ -1,7 +1,7 @@
-export function Logo({ className = "h-10 w-10" }: { className?: string }) {
+export function Logo({ className = 'logo-mark' }: { className?: string }) {
   return (
-    <div className={`relative ${className}`}>
-      <svg viewBox="0 0 120 120" fill="none" className="h-full w-full">
+    <div className={className}>
+      <svg viewBox="0 0 120 120" fill="none" width="100%" height="100%" aria-hidden="true">
         <defs>
           <linearGradient id="guilda-gradient" x1="12" y1="8" x2="102" y2="110" gradientUnits="userSpaceOnUse">
             <stop stopColor="#A78BFA" />
