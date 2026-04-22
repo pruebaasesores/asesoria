@@ -1,14 +1,14 @@
 import Link from 'next/link';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, ShieldCheck } from 'lucide-react';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
 
-export default function SuccessPage({
+export default async function SuccessPage({
   searchParams,
 }: {
-  searchParams: { expert?: string; slot?: string; amount?: string };
+  searchParams: Promise<{ expert?: string; slot?: string; amount?: string }>;
 }) {
-  const params = searchParams;
+  const params = await searchParams;
 
   return (
     <main>
@@ -16,16 +16,42 @@ export default function SuccessPage({
       <section className="section compact-top-section">
         <div className="container">
           <div className="card success-card">
-            <div className="success-icon"><CheckCircle2 size={32} /></div>
-            <div className="eyebrow pill">Reserva creada</div>
-            <h1 className="page-title small-title">Checkout completado {params.amount ? '(modo demo o Stripe)' : ''}</h1>
+            <div className="success-icon">
+              <CheckCircle2 size={40} />
+            </div>
+            <div className="eyebrow pill">Reserva completada</div>
+            <h1 className="page-title small-title">Tu sesión ya está bloqueada dentro de Guilda</h1>
             <p className="page-copy">
-              Has reservado una sesión con <strong>{params.expert || 'tu experto'}</strong> para <strong>{params.slot || 'un horario seleccionado'}</strong>.
-              Total gestionado: <strong>{params.amount || '0'} €</strong>.
+              El flujo ideal ahora es este: pago dentro de la plataforma, horario confirmado y relación comercial protegida.
             </p>
+
+            <div className="success-summary">
+              <div className="summary-row">
+                <span>Coach</span>
+                <strong>{params.expert ?? 'Coach confirmado'}</strong>
+              </div>
+              <div className="summary-row">
+                <span>Horario</span>
+                <strong>{params.slot ?? 'Slot confirmado'}</strong>
+              </div>
+              <div className="summary-row summary-total">
+                <span>Total</span>
+                <strong>{params.amount ?? 'Pago realizado'}</strong>
+              </div>
+            </div>
+
+            <div className="note-box">
+              <ShieldCheck size={16} />
+              Todo queda dentro de Guilda para proteger al jugador, al coach y la operativa del marketplace.
+            </div>
+
             <div className="cta-actions">
-              <Link href="/dashboard" className="button button-primary">Ver operaciones</Link>
-              <Link href="/browse" className="button button-secondary">Seguir explorando</Link>
+              <Link href="/browse" className="button button-primary">
+                Seguir explorando coaches
+              </Link>
+              <Link href="/dashboard" className="button button-secondary">
+                Ver actividad
+              </Link>
             </div>
           </div>
         </div>

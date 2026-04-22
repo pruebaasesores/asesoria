@@ -9,15 +9,18 @@ export function Footer() {
           <Logo />
           <div>
             <div className="brand-copy-title">Guilda</div>
-            <div className="brand-copy-small">Marketplace premium para expertos y clientes. Demo funcional lista para evolucionar a producción.</div>
+            <div className="brand-copy-small">
+              Plataforma gamer para reservar coaches, dúos y sesiones competitivas sin sacar al jugador fuera del producto.
+            </div>
           </div>
         </div>
+
         <div className="footer-links">
           <Link href="/">Inicio</Link>
-          <Link href="/browse">Marketplace</Link>
+          <Link href="/browse">Coaches</Link>
           <Link href="/auth">Registro</Link>
-          <Link href="/dashboard">Operaciones</Link>
-          <Link href="/profile">Panel experto</Link>
+          <Link href="/profile">Panel coach</Link>
+          <Link href="/dashboard">Actividad</Link>
         </div>
       </div>
     </footer>

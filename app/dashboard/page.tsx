@@ -11,9 +11,9 @@ export default function DashboardPage() {
       <section className="section compact-top-section">
         <div className="container">
           <SectionTitle
-            badge="Panel operativo"
-            title="Una vista de negocio que ya enseña GMV, reservas y siguiente paso de pagos"
-            description="Esta página aterriza la historia que necesitas contar: Guilda no es solo bonita; tiene lógica de negocio, control y monetización."
+            badge="Actividad del negocio"
+            title="Una vista clara para entender reservas, ocupación y dinero"
+            description="Aunque ahora sea una base visual, la capa operativa ya enseña cómo debería funcionar el negocio cuando tenga uso real."
           />
 
           <div className="dashboard-stat-grid">
@@ -31,9 +31,9 @@ export default function DashboardPage() {
             ))}
           </div>
 
-          <div className="two-column dashboard-columns">
+          <div className="dashboard-columns">
             <div className="card side-card">
-              <div className="table-title">Últimas reservas demo</div>
+              <div className="table-title">Últimas reservas</div>
               <div className="booking-list">
                 {bookings.map((booking) => (
                   <div key={booking.id} className="booking-row">
@@ -52,20 +52,24 @@ export default function DashboardPage() {
 
             <div className="stack-list-side">
               <div className="card side-card">
-                <div className="side-card-title"><ShieldCheck size={18} /> Stripe checklist</div>
+                <div className="side-card-title">
+                  <ShieldCheck size={18} />
+                  Stripe checklist
+                </div>
                 <ul className="mini-list">
                   {stripeSetupNotes.map((note) => (
                     <li key={note}>{note}</li>
                   ))}
                 </ul>
               </div>
+
               <div className="card side-card">
-                <div className="table-title">Qué ya está resuelto</div>
+                <div className="table-title">Qué ya cubre el producto</div>
                 <ul className="mini-list">
-                  <li>Registro separado para experto y cliente</li>
-                  <li>Precio editable del experto</li>
-                  <li>Calendario con reserva por slot</li>
-                  <li>Ruta de checkout preparada para Stripe o demo</li>
+                  <li>Registro separado para coach y jugador</li>
+                  <li>Coach con precio propio y perfil premium</li>
+                  <li>Calendario de slots reservables</li>
+                  <li>Reserva y pago dentro de la plataforma</li>
                 </ul>
               </div>
             </div>

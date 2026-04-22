@@ -9,67 +9,87 @@ export function RoleAuth() {
   const [role, setRole] = useState<Role>('client');
   const [accepted, setAccepted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [expertPrice, setExpertPrice] = useState('25');
+  const [price, setPrice] = useState('29');
 
-  const summary = useMemo(() => {
+  const helperCopy = useMemo(() => {
     if (role === 'client') {
-      return 'Crear cuenta cliente para reservar, pagar y gestionar tus sesiones desde una sola cuenta.';
+      return 'Entra para descubrir coaches, comparar perfiles, reservar slots y pagar sin salir de Guilda.';
     }
-    return `Alta de experto con precio editable. Demo actual: ${expertPrice || '0'} €/sesión.`;
-  }, [role, expertPrice]);
+    return `Activa tu perfil coach, fija tu precio por sesión y publica disponibilidad. Precio actual: ${price || '0'} €/sesión.`;
+  }, [role, price]);
 
   return (
-    <div className="auth-shell two-column auth-grid">
+    <div className="auth-shell auth-grid">
       <div className="card auth-panel">
         <div className="auth-toggle">
-          <button type="button" className={`toggle-pill ${role === 'client' ? 'toggle-pill-active' : ''}`} onClick={() => setRole('client')}>
-            Registro cliente
+          <button
+            type="button"
+            className={`toggle-pill ${role === 'client' ? 'toggle-pill-active' : ''}`}
+            onClick={() => setRole('client')}
+          >
+            Soy jugador
           </button>
-          <button type="button" className={`toggle-pill ${role === 'expert' ? 'toggle-pill-active' : ''}`} onClick={() => setRole('expert')}>
-            Registro experto
+          <button
+            type="button"
+            className={`toggle-pill ${role === 'expert' ? 'toggle-pill-active' : ''}`}
+            onClick={() => setRole('expert')}
+          >
+            Soy coach
           </button>
         </div>
 
-        <div className="eyebrow pill">Alta diferenciada por rol</div>
-        <h1 className="page-title small-title">{role === 'client' ? 'Entra para reservar expertos' : 'Crea tu perfil experto y monetiza tu tiempo'}</h1>
-        <p className="page-copy">{summary}</p>
+        <div className="eyebrow pill">Acceso gamer</div>
+        <h1 className="page-title small-title">
+          {role === 'client' ? 'Entra para reservar coaches top' : 'Convierte tu skill en un servicio premium'}
+        </h1>
+        <p className="page-copy">{helperCopy}</p>
 
         <div className="form-grid form-grid-two">
           <div>
-            <label className="field-label">Nombre</label>
-            <input className="input" placeholder={role === 'client' ? 'Tu nombre' : 'Nombre profesional'} />
+            <label className="field-label">Nombre o nickname</label>
+            <input className="input" placeholder={role === 'client' ? 'Tu nickname' : 'Tu nombre de coach'} />
           </div>
           <div>
             <label className="field-label">Email</label>
             <input className="input" placeholder="tu@email.com" />
           </div>
-          {role === 'expert' && (
+
+          {role === 'expert' ? (
             <>
               <div>
-                <label className="field-label">Especialidad</label>
-                <input className="input" placeholder="Valorant, LoL, Fortnite..." />
+                <label className="field-label">Juego principal</label>
+                <select className="input">
+                  <option>Valorant</option>
+                  <option>Fortnite</option>
+                  <option>League of Legends</option>
+                </select>
               </div>
               <div>
                 <label className="field-label">Precio por sesión (€)</label>
-                <input className="input" value={expertPrice} onChange={(event) => setExpertPrice(event.target.value)} />
+                <input className="input" value={price} onChange={(event) => setPrice(event.target.value)} />
               </div>
               <div className="full-span">
-                <label className="field-label">Propuesta de valor</label>
-                <textarea className="input textarea" placeholder="Qué ofreces, para quién es y qué mejora obtendrá el cliente" />
+                <label className="field-label">Qué ofreces</label>
+                <textarea
+                  className="input textarea"
+                  placeholder="Explica qué tipo de jugador ayudas, en qué eres fuerte y qué mejora concreta se lleva tras la sesión"
+                />
               </div>
             </>
-          )}
-          {role === 'client' && (
+          ) : (
             <div className="full-span">
-              <label className="field-label">Objetivo principal</label>
-              <textarea className="input textarea" placeholder="Ejemplo: subir a diamante, mejorar builds, encontrar coach serio..." />
+              <label className="field-label">Qué quieres mejorar</label>
+              <textarea
+                className="input textarea"
+                placeholder="Ejemplo: mejores peeks en Fortnite, macro en LoL o consistencia en Valorant"
+              />
             </div>
           )}
         </div>
 
         {role === 'expert' && (
           <div className="terms-box">
-            <div className="table-title">Condiciones para expertos</div>
+            <div className="table-title">Condición obligatoria para coaches</div>
             <ul className="mini-list">
               {platformRules.map((rule) => (
                 <li key={rule}>{rule}</li>
@@ -77,7 +97,7 @@ export function RoleAuth() {
             </ul>
             <label className="checkbox-row">
               <input type="checkbox" checked={accepted} onChange={() => setAccepted((value) => !value)} />
-              <span>Acepto expresamente las condiciones del marketplace.</span>
+              <span>Acepto las condiciones operativas de Guilda.</span>
             </label>
           </div>
         )}
@@ -88,14 +108,14 @@ export function RoleAuth() {
           disabled={role === 'expert' && !accepted}
           onClick={() => setSubmitted(true)}
         >
-          {role === 'client' ? 'Crear cuenta cliente' : 'Crear cuenta experto'}
+          {role === 'client' ? 'Crear cuenta jugador' : 'Publicar perfil coach'}
         </button>
 
         {submitted && (
           <div className="success-banner">
             {role === 'client'
-              ? 'Cuenta cliente demo creada. Siguiente paso: reservar una sesión y pasar por checkout.'
-              : 'Perfil experto demo creado. Tu precio y tus condiciones ya quedarían visibles para los clientes.'}
+              ? 'Tu cuenta jugador ya quedaría lista para reservar coaches, pagar y seguir tus sesiones.'
+              : 'Tu perfil coach ya quedaría publicado con precio, propuesta y regla obligatoria aceptada.'}
           </div>
         )}
       </div>
@@ -105,28 +125,31 @@ export function RoleAuth() {
           <div className="table-title">Qué desbloquea cada rol</div>
           <div className="compare-grid">
             <div className="compare-col">
-              <div className="compare-title">Cliente</div>
+              <div className="compare-title">Jugador</div>
               <ul className="mini-list">
-                <li>Reserva por calendario</li>
-                <li>Pago centralizado</li>
-                <li>Historial de sesiones</li>
-                <li>Reprogramaciones dentro de la plataforma</li>
+                <li>Comparar coaches por juego y estilo</li>
+                <li>Reservar slots en segundos</li>
+                <li>Pagar dentro de la plataforma</li>
+                <li>Tener todo ordenado en una sola cuenta</li>
               </ul>
             </div>
             <div className="compare-col">
-              <div className="compare-title">Experto</div>
+              <div className="compare-title">Coach</div>
               <ul className="mini-list">
-                <li>Precio editable</li>
-                <li>Bio, tags y disponibilidad</li>
-                <li>Checkout preparado para comisión</li>
-                <li>Condiciones legales integradas</li>
+                <li>Poner tu propio precio</li>
+                <li>Activar disponibilidad</li>
+                <li>Mostrar una propuesta premium</li>
+                <li>Recibir reservas mejor filtradas</li>
               </ul>
             </div>
           </div>
         </div>
+
         <div className="card side-card">
-          <div className="table-title">Experiencia que transmite confianza</div>
-          <p>Este onboarding ya separa muy bien oferta y demanda. Es justo lo que necesitas para escalar sin parecer una plataforma genérica.</p>
+          <div className="table-title">Enfoque actual</div>
+          <p>
+            Guilda empieza solo con Fortnite, Valorant y League of Legends. Eso permite concentrar oferta, elevar la calidad del marketplace y construir una marca mucho más fuerte.
+          </p>
         </div>
       </div>
     </div>

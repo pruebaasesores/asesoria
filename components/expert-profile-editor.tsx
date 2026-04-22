@@ -4,20 +4,24 @@ import { useMemo, useState } from 'react';
 import { platformRules } from '@/lib/mock-data';
 
 export function ExpertProfileEditor() {
-  const [price, setPrice] = useState('29');
-  const [title, setTitle] = useState('Coach de Valorant para mejorar macro, aim y lectura de rondas');
-  const [bio, setBio] = useState('Trabajo sesiones 1:1 para jugadores que quieren subir rank sin perder tiempo en teoría genérica.');
-  const [acceptedRule, setAcceptedRule] = useState(true);
+  const [price, setPrice] = useState('32');
+  const [title, setTitle] = useState('Coach de Valorant para ranked climb, VOD review y toma de decisiones');
+  const [bio, setBio] = useState(
+    'Trabajo sesiones 1:1 con jugadores que quieren dejar de improvisar y empezar a subir con un plan claro.'
+  );
+  const [accepted, setAccepted] = useState(true);
 
-  const platformFee = useMemo(() => Math.round(Number(price || 0) * 0.12), [price]);
-  const takeHome = useMemo(() => Number(price || 0) - platformFee, [price, platformFee]);
+  const commission = useMemo(() => Math.max(2, Math.round(Number(price || 0) * 0.12)), [price]);
+  const takeHome = useMemo(() => Math.max(0, Number(price || 0) - commission), [price, commission]);
 
   return (
     <div className="profile-editor-grid">
       <div className="card profile-editor-card">
-        <div className="eyebrow pill">Panel experto</div>
-        <h1 className="page-title small-title">Configura tu perfil, tu precio y tus reglas visibles</h1>
-        <p className="page-copy">Esto simula cómo el experto controlará su propuesta comercial sin tocar código.</p>
+        <div className="eyebrow pill">Panel coach</div>
+        <h1 className="page-title small-title">Construye un perfil gamer que venda bien</h1>
+        <p className="page-copy">
+          Tu ficha tiene que explicar rápido quién ayudas, qué cambio prometes y por qué vale tu precio.
+        </p>
 
         <div className="form-grid">
           <div>
@@ -35,9 +39,9 @@ export function ExpertProfileEditor() {
         </div>
 
         <div className="terms-box">
-          <div className="table-title">Condición obligatoria</div>
+          <div className="table-title">Regla obligatoria</div>
           <label className="checkbox-row">
-            <input type="checkbox" checked={acceptedRule} onChange={() => setAcceptedRule((value) => !value)} />
+            <input type="checkbox" checked={accepted} onChange={() => setAccepted((value) => !value)} />
             <span>{platformRules[0]}</span>
           </label>
         </div>
@@ -45,23 +49,35 @@ export function ExpertProfileEditor() {
 
       <div className="stack-list-side">
         <div className="card side-card">
-          <div className="table-title">Resumen económico</div>
-          <div className="summary-row"><span>Precio visible</span><strong>{price} €</strong></div>
-          <div className="summary-row"><span>Comisión Guilda 12%</span><strong>{platformFee} €</strong></div>
-          <div className="summary-row summary-total"><span>Ingreso estimado experto</span><strong>{takeHome} €</strong></div>
+          <div className="table-title">Economía de una sesión</div>
+          <div className="summary-row">
+            <span>Precio visible al jugador</span>
+            <strong>{price} €</strong>
+          </div>
+          <div className="summary-row">
+            <span>Comisión Guilda (12%)</span>
+            <strong>{commission} €</strong>
+          </div>
+          <div className="summary-row summary-total">
+            <span>Ingreso estimado coach</span>
+            <strong>{takeHome} €</strong>
+          </div>
         </div>
+
         <div className="card side-card">
-          <div className="table-title">Vista previa del perfil</div>
+          <div className="table-title">Vista previa de perfil</div>
           <div className="preview-badge">{price} € / sesión</div>
           <p className="preview-title">{title}</p>
           <p>{bio}</p>
           <div className="chip-row">
             <span className="chip">Valorant</span>
-            <span className="chip">1:1</span>
-            <span className="chip">Verificado</span>
+            <span className="chip">1:1 coaching</span>
+            <span className="chip">Perfil verificado</span>
           </div>
           <div className="note-box">
-            {acceptedRule ? 'Condición obligatoria aceptada.' : 'Falta aceptar la condición obligatoria del marketplace.'}
+            {accepted
+              ? 'Condición operativa obligatoria aceptada.'
+              : 'Falta aceptar la condición operativa para publicar el perfil.'}
           </div>
         </div>
       </div>

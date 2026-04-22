@@ -12,29 +12,31 @@ export default function BrowsePage() {
       <section className="section compact-top-section">
         <div className="container">
           <SectionTitle
-            badge="Marketplace activo"
-            title="Compara expertos, precios y slots sin salir de la plataforma"
-            description="Aquí ya se ve el comportamiento del negocio: perfiles premium, precio visible y llamada a reservar."
+            badge="Marketplace gamer"
+            title="Encuentra tu coach ideal en Fortnite, Valorant o League of Legends"
+            description="Filtra por juego, compara estilo y precio, y entra directamente a la ficha para reservar tu sesión."
           />
 
           <div className="browse-toolbar card">
             <div className="toolbar-input">
               <Search size={18} />
-              <span>Buscar por juego, estilo o nivel…</span>
+              <span>Busca por juego, rank, rol, tipo de coaching o mejora que buscas…</span>
             </div>
             <div className="toolbar-filter">
               <SlidersHorizontal size={18} />
-              <span>Filtros premium</span>
+              <span>Filtros gamer</span>
             </div>
           </div>
 
           <div className="chip-row spacious-row">
             {categories.map((category, index) => (
-              <span key={category} className={`chip chip-large ${index === 0 ? 'chip-active' : ''}`}>{category}</span>
+              <span key={category} className={`chip chip-large ${index === 0 ? 'chip-active' : ''}`}>
+                {category}
+              </span>
             ))}
           </div>
 
-          <div className="browse-grid expert-grid">
+          <div className="browse-grid">
             {experts.map((expert) => (
               <ExpertCard key={expert.slug} expert={expert} />
             ))}

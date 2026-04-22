@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Guilda — Marketplace de expertos y gamers',
+  title: 'Guilda — coaching gamer premium',
   description:
-    'Marketplace premium para reservar sesiones con expertos. Demo visual para validar producto, onboarding, perfiles, reservas y panel de control.',
+    'Reserva coaches y jugadores top de Fortnite, Valorant y League of Legends. Perfiles premium, calendario y pago dentro de la plataforma.',
 };
 
 export default function RootLayout({

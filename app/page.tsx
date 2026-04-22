@@ -2,13 +2,15 @@ import Link from 'next/link';
 import {
   ArrowRight,
   CalendarCheck2,
-  CreditCard,
+  Crown,
+  Flame,
+  Gamepad2,
   ShieldCheck,
   Sparkles,
   Star,
-  Store,
-  Users,
-  Wallet,
+  Sword,
+  Trophy,
+  Zap,
 } from 'lucide-react';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
@@ -16,7 +18,6 @@ import { SectionTitle } from '@/components/section-title';
 import { ExpertCard } from '@/components/expert-card';
 import { StatCard } from '@/components/stat-card';
 import {
-  clientBenefits,
   dashboardMetrics,
   expertPerks,
   experts,
@@ -35,24 +36,24 @@ export default function HomePage() {
           <div>
             <div className="eyebrow pill">
               <Sparkles size={14} />
-              Marketplace real para expertos y clientes · listo para reservas y Stripe
+              gaming only · fortnite · valorant · league of legends
             </div>
             <h1 className="hero-title">
-              Reserva talento en minutos y convierte a los expertos en <span className="gradient-text">negocio repetible</span>.
+              Reserva <span className="gradient-text">coaches top</span> y sube de nivel sin perder tiempo.
             </h1>
             <p className="hero-copy">
-              Guilda nace para gaming, pero ya está planteada como un marketplace serio: registro separado por rol,
-              precio editable por experto, calendario de slots, checkout preparado para Stripe y reglas operativas que protegen la comisión.
+              Guilda empieza donde mejor encaja el modelo: coaching gamer premium. Eliges juego, comparas perfiles, revisas precio y reservas tu sesión dentro de la plataforma.
             </p>
             <div className="hero-actions">
               <Link href="/browse" className="button button-primary">
-                Encontrar experto
+                Encontrar coach
                 <ArrowRight size={18} />
               </Link>
               <Link href="/auth" className="button button-secondary">
-                Crear cuenta
+                Quiero ser coach
               </Link>
             </div>
+
             <div className="stat-grid">
               {metrics.map((metric) => (
                 <StatCard key={metric.label} value={metric.value} label={metric.label} />
@@ -60,41 +61,43 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="hero-panel card glass">
+          <div className="hero-panel card glass gamer-panel">
             <div className="panel-topline">
               <span className="live-dot" />
-              Vista ejecutiva del producto
+              marketplace listo para reservar
             </div>
+
             <div className="stack-list">
               <div className="mini-expert-card">
                 <div>
-                  <div className="mini-expert-title">Registro cliente y experto</div>
-                  <div className="mini-expert-subtitle">Dos journeys distintos para oferta y demanda</div>
+                  <div className="mini-expert-title">Fortnite coaching</div>
+                  <div className="mini-expert-subtitle">Builds, peeks, control de altura y calma en fights</div>
                 </div>
-                <div className="mini-price">2 roles</div>
+                <div className="mini-price">FN</div>
               </div>
               <div className="mini-expert-card">
                 <div>
-                  <div className="mini-expert-title">Reservas por calendario</div>
-                  <div className="mini-expert-subtitle">Slots visibles y checkout sin fricción</div>
+                  <div className="mini-expert-title">Valorant ranked climb</div>
+                  <div className="mini-expert-subtitle">Aim, macro, VOD review y disciplina en rounds</div>
                 </div>
-                <div className="mini-price">Live</div>
+                <div className="mini-price">VLR</div>
               </div>
               <div className="mini-expert-card">
                 <div>
-                  <div className="mini-expert-title">Stripe ready</div>
-                  <div className="mini-expert-subtitle">Ruta preparada para activar pagos reales</div>
+                  <div className="mini-expert-title">LoL duo & macro</div>
+                  <div className="mini-expert-subtitle">Laning, wave control, visión y tempo</div>
                 </div>
-                <div className="mini-price">API</div>
+                <div className="mini-price">LoL</div>
               </div>
             </div>
+
             <div className="feature-highlight">
               <div className="feature-highlight-head">
                 <ShieldCheck size={18} />
-                Operativa ganadora
+                experiencia más segura y más premium
               </div>
               <p>
-                Cliente descubre → compara → reserva → paga dentro de Guilda. El experto fija precio, condiciones y disponibilidad sin sacar la relación fuera.
+                El jugador no tiene que perseguir coaches por Discord. En Guilda compara, reserva y paga dentro del producto.
               </p>
             </div>
           </div>
@@ -104,25 +107,26 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <SectionTitle
-            badge="Lo que te hacía falta"
-            title="Ya no es solo una landing: ya parece un producto por el que alguien pagaría." 
-            description="La clave de Guilda está en combinar confianza, operación y monetización. Eso es lo que hace que un marketplace deje de ser una idea bonita y empiece a parecer negocio real."
+            badge="Por qué esta idea sí puede funcionar"
+            title="No intentamos abarcar todo: empezamos donde la compra es más rápida y la propuesta más clara"
+            description="Tres juegos, perfiles premium, precio visible y reserva directa. Menos ruido y más posibilidad de validar de verdad."
           />
+
           <div className="icon-grid">
             <div className="card feature-card">
-              <Users className="feature-icon" />
-              <h3>Onboarding separado por rol</h3>
-              <p>Cliente y experto no deberían vivir el mismo alta. Ahora cada uno entra con contexto, expectativas y pasos distintos.</p>
+              <Gamepad2 className="feature-icon" />
+              <h3>Solo gaming, sin mezcla rara</h3>
+              <p>Fortnite, Valorant y League of Legends. El marketplace se siente cohesivo y la oferta se entiende al instante.</p>
             </div>
             <div className="card feature-card">
               <CalendarCheck2 className="feature-icon" />
-              <h3>Calendario con intención de compra</h3>
-              <p>La reserva deja de ser una promesa. El usuario ve disponibilidad, elige slot y está a un clic del checkout.</p>
+              <h3>Calendario y reserva claros</h3>
+              <p>El jugador ve slots listos para reservar. Menos mensajes, menos fricción y más intención de compra.</p>
             </div>
             <div className="card feature-card">
-              <Wallet className="feature-icon" />
-              <h3>Comisión incorporada</h3>
-              <p>El precio del experto convive con la comisión. Desde diseño ya se entiende el modelo económico del producto.</p>
+              <Crown className="feature-icon" />
+              <h3>Perfiles diseñados para convertir</h3>
+              <p>Promesa clara, reviews, precio y pruebas de calidad. Todo apunta a una sensación más seria y premium.</p>
             </div>
           </div>
         </div>
@@ -132,12 +136,15 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head-row">
             <SectionTitle
-              badge="Marketplace"
-              title="Expertos listos para reservar desde una ficha que transmite confianza"
-              description="Hemos dejado el producto empezando por gaming porque ahí es donde la compra es más intuitiva y más rápida de validar."
+              badge="Top coaches"
+              title="Perfiles listos para reservar hoy"
+              description="Cada ficha está construida para vender mejor: enfoque, transformación, precio, reviews y slots."
             />
-            <Link href="/browse" className="button button-secondary">Ver todos</Link>
+            <Link href="/browse" className="button button-secondary">
+              Ver marketplace
+            </Link>
           </div>
+
           <div className="expert-grid">
             {experts.slice(0, 4).map((expert) => (
               <ExpertCard key={expert.slug} expert={expert} />
@@ -150,13 +157,18 @@ export default function HomePage() {
         <div className="container">
           <SectionTitle
             badge="Cómo funciona"
-            title="Una secuencia de producto que ya enseña cómo escalar la operación"
-            description="Esto no es un mock sin alma. Cada bloque prepara el siguiente: alta, reserva, checkout y control operativo."
+            title="Una secuencia corta y muy fácil de entender para jugador y coach"
+            description="La idea no es meter pasos, sino llevar al usuario hasta la reserva con el menor ruido posible."
           />
+
           <div className="steps-grid">
-            {howItWorks.map((step) => (
+            {howItWorks.map((step, index) => (
               <div key={step.order} className="card step-card">
-                <div className="step-icon-wrap"><Store className="step-icon" /></div>
+                <div className="step-icon-wrap">
+                  {index === 0 && <Sword className="step-icon" />}
+                  {index === 1 && <Zap className="step-icon" />}
+                  {index === 2 && <Trophy className="step-icon" />}
+                </div>
                 <div className="step-number">Paso {step.order}</div>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>
@@ -170,25 +182,38 @@ export default function HomePage() {
         <div className="container two-column">
           <div>
             <SectionTitle
-              badge="Valor para expertos"
-              title="El experto siente que está entrando en una plataforma premium, no en un tablón de anuncios."
-              description="Eso sube el perceived value y hace mucho más fácil cobrar comisión sin fricción."
+              badge="Para coaches"
+              title="Monetiza tu nivel con una experiencia que parece un producto serio"
+              description="No se trata solo de publicar un perfil. Se trata de mostrar valor, justificar el precio y recibir reservas mucho mejor filtradas."
             />
             <div className="check-list spacious-row">
               {expertPerks.map((item) => (
-                <div key={item} className="check-item"><ShieldCheck size={18} /> {item}</div>
+                <div key={item} className="check-item">
+                  <ShieldCheck size={18} />
+                  {item}
+                </div>
               ))}
             </div>
           </div>
+
           <div>
             <SectionTitle
-              badge="Valor para clientes"
-              title="El cliente entiende en segundos qué compra, cuánto cuesta y cuándo puede reservar."
-              description="Ese nivel de claridad es lo que reduce miedo al pago en un marketplace nuevo."
+              badge="Prueba social"
+              title="La marca se siente gamer, la compra se siente segura"
+              description="Aunque ahora trabajes con ejemplos ficticios, la interfaz ya enseña cómo debería sentirse el producto final."
             />
-            <div className="check-list spacious-row">
-              {clientBenefits.map((item) => (
-                <div key={item} className="check-item"><CreditCard size={18} /> {item}</div>
+            <div className="testimonial-grid compact-testimonials">
+              {testimonials.map((testimonial) => (
+                <div key={testimonial.name} className="card testimonial-card">
+                  <div className="rating-line">
+                    <Star size={16} fill="currentColor" /> 5.0
+                  </div>
+                  <p>“{testimonial.quote}”</p>
+                  <div className="testimonial-meta">
+                    <strong>{testimonial.name}</strong>
+                    <span>{testimonial.context}</span>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -198,31 +223,9 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <SectionTitle
-            badge="Prueba social"
-            title="Incluso en demo ya se ve una plataforma que inspira seriedad"
-            description="La confianza no sale de decir que eres premium. Sale de que el producto parezca listo para operar."
-          />
-          <div className="testimonial-grid">
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.name} className="card testimonial-card">
-                <div className="rating-line"><Star size={16} fill="currentColor" /> 5.0</div>
-                <p>“{testimonial.quote}”</p>
-                <div className="testimonial-meta">
-                  <strong>{testimonial.name}</strong>
-                  <span>{testimonial.context}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section muted-section">
-        <div className="container">
-          <SectionTitle
-            badge="Operaciones"
-            title="Vista ejecutiva para entender por qué esto puede convertirse en negocio"
-            description="No solo hemos pensado la cara visible. También hay narrativa clara de GMV, reservas y margen."
+            badge="Señales de negocio"
+            title="El producto ya cuenta una historia clara de conversión y margen"
+            description="Demanda, reservas, ocupación y comisión. Lo suficiente para visualizar un marketplace gamer rentable."
           />
           <div className="dashboard-stat-grid">
             {dashboardMetrics.map((item) => (
@@ -237,15 +240,22 @@ export default function HomePage() {
 
       <section className="section">
         <div className="container">
-          <div className="card cta-card cta-centered">
-            <div className="eyebrow pill">Siguiente paso natural</div>
-            <h2 className="page-title small-title">Activa Stripe real y empieza a validar reservas de verdad.</h2>
+          <div className="card cta-card">
+            <div className="eyebrow pill">
+              <Flame size={14} />
+              momento de activar demanda y oferta
+            </div>
+            <h2 className="page-title small-title">Explora coaches o publica tu perfil y empieza a jugar en serio</h2>
             <p className="page-copy">
-              La experiencia ya está montada. Lo siguiente es enchufar claves reales, Stripe Connect para expertos y persistencia en base de datos.
+              Guilda empieza con tres juegos y una promesa muy simple: ayudar a jugadores a mejorar rápido y permitir que los mejores coaches cobren por ello de forma profesional.
             </p>
             <div className="cta-actions">
-              <Link href="/auth" className="button button-primary">Registrar experto o cliente</Link>
-              <Link href="/browse" className="button button-secondary">Probar reserva</Link>
+              <Link href="/browse" className="button button-primary">
+                Ver coaches
+              </Link>
+              <Link href="/profile" className="button button-secondary">
+                Crear perfil coach
+              </Link>
             </div>
           </div>
         </div>

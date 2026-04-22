@@ -8,7 +8,7 @@ export function SectionTitle({
   description: string;
 }) {
   return (
-    <div>
+    <div className="section-title-block">
       <div className="eyebrow pill">{badge}</div>
       <h2 className="page-title small-title">{title}</h2>
       <p className="page-copy">{description}</p>
